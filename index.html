@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cases - Add Toppings to Pizza</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #e74c3c;
+            margin: 0;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        h2 {
+            color: #e74c3c;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .question-section {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .question {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+        }
+        .test-case {
+            margin: 8px 0;
+            padding-left: 10px;
+        }
+        .question-ref {
+            background-color: #ffc107;
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .print-btn:hover {
+            background-color: #c0392b;
+        }
+        .meta-info {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .meta-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn no-print" onclick="window.print()">📄 Сохранить как PDF</button>
+    
+    <div class="header">
+        <h1>Test Cases for "Add Toppings to Pizza" Feature</h1>
+        <div class="subtitle">Dominos Pizza - QA Testing Documentation</div>
+        <div class="subtitle">Duration: 1 hour | Total Test Cases: 103</div>
+    </div>
+
+    <div class="meta-info">
+        <p><strong>Product:</strong> Pizza Dominos website - https://www.dominos.co.il/</p>
+        <p><strong>Feature:</strong> Add toppings to a pizza</p>
+        <p><strong>Test Date:</strong> December 29, 2025</p>
+	<p><strong>Prepared by:</strong> QA Engineer - Viqtor Strog</p>
+    </div>
+
+    <h2>QUESTIONS TO CLARIFY</h2>
+    <div class="question-section">
+        <div class="question">Q1: Are there different pizza sizes (Medium, family, big, meter)?</div>
+        <p>→ Affects: Functional Testing #16, Negative Testing #89-90, Regression Testing #100</p>
+    </div>
+    <div class="question-section">
+        <div class="question">Q2: Is order button exists at all? What to do after pizza assembled? How to order?</div>
+        <p>→ Affects: Functional Testing #15, Integration Testing #75-80, Smoke Testing #102</p>
+    </div>
+    <div class="question-section">
+        <div class="question">Q3: Are there any incompatible topping restrictions that exist?</div>
+        <p>→ Affects: Functional Testing #13, Negative Testing #86</p>
+    </div>
+    <div class="question-section">
+        <div class="question">Q4: What is the maximum number of toppings allowed per pizza?</div>
+        <p>→ Affects: Negative Testing #81, Boundary Testing #90</p>
+    </div>
+    <div class="question-section">
+        <div class="question">Q5: Are there any toppings that can be out of stock?</div>
+        <p>→ Affects: Negative Testing #86</p>
+    </div>
+    <div class="question-section">
+        <div class="question">Q6: Do free toppings or promotional toppings exist?</div>
+        <p>→ Affects: Functional Testing #19-20</p>
+    </div>
+    <div class="question-section">
+        <div class="question">Q7: Is there an undo/redo functionality?</div>
+        <p>→ Affects: UI/UX Testing #34</p>
+    </div>
+    <div class="question-section">
+        <div class="question">Q8: Are topping categories organized (fish, vegetables, cheese)?</div>
+        <p>→ Affects: UI/UX Testing #31</p>
+    </div>
+
+    <h2>FUNCTIONAL TESTING</h2>
+    
+    <h3>CRUD Operations</h3>
+    <div class="test-case">1. Verify that user can select a single topping from available options (Create)</div>
+    <div class="test-case">2. Check if user can deselect previously selected topping by clicking on it again (Delete)</div>
+    <div class="test-case">3. Check if multiple toppings can be selected simultaneously (Create multiple)</div>
+    <div class="test-case">4. Verify that removing all toppings returns pizza to the base state (Delete all)</div>
+    <div class="test-case">5. Verify that each topping has quantity selection options (left, right half, full) (Update)</div>
+    <div class="test-case">6. Check if quantity topping changes pizza visual representation (Update)</div>
+    <div class="test-case">7. Verify that topping selection saves when switching between pizza customization sections (Read/Persistence)</div>
+    <div class="test-case">8. Verify that close button saves toppings selection when clicking and reopening (Read/Persistence)</div>
+
+    <h3>Business Logic</h3>
+    <div class="test-case">9. Verify that price correctly changes when adding toppings</div>
+    <div class="test-case">10. Verify that price correctly changes when removing toppings</div>
+    <div class="test-case">11. Verify that price calculates correctly with multiple toppings selection</div>
+    <div class="test-case">12. Verify that different toppings quantity affects the price differently</div>
+    <div class="test-case">13. <span class="question-ref">Q3</span> Verify that system prevents adding incompatible toppings if such restriction exists</div>
+    <div class="test-case">14. Verify that sauces adding doesn't affect selected toppings</div>
+    <div class="test-case">15. <span class="question-ref">Q2</span> Verify that order button EXISTS and is available after selecting at least one topping</div>
+    <div class="test-case">16. <span class="question-ref">Q1</span> Check if topping selection works correctly on different pizza sizes if they exist</div>
+    <div class="test-case">17. Verify that users can add all available toppings to a single pizza</div>
+    <div class="test-case">18. Verify that base pizza price is correct before any toppings are added</div>
+    <div class="test-case">19. <span class="question-ref">Q6</span> Verify that free toppings (if any) don't increase the total price</div>
+    <div class="test-case">20. <span class="question-ref">Q6</span> Verify that promotional/discounted toppings apply correct pricing</div>
+
+    <h2>UI/UX TESTING</h2>
+    
+    <h3>Visual Design</h3>
+    <div class="test-case">21. Check that visualization of pizza updates correctly according to checked/added toppings</div>
+    <div class="test-case">22. Check that visualization of pizza is correct when selected toppings are unchecked/removed</div>
+    <div class="test-case">23. Verify that checked toppings are visually different from unselected ones</div>
+    <div class="test-case">24. Verify that topping names and descriptions are displayed clearly and correctly</div>
+    <div class="test-case">25. Verify that pizza image quality is adequate and not pixelated</div>
+    <div class="test-case">26. Verify that topping icons/images are clear and recognizable</div>
+    <div class="test-case">27. Verify that color scheme is consistent across the topping selection interface</div>
+    <div class="test-case">28. Verify that selected toppings are highlighted properly on the pizza visualization</div>
+
+    <h3>Usability</h3>
+    <div class="test-case">29. Verify that all topping checkboxes are clickable and responsive</div>
+    <div class="test-case">30. Verify that interface handles rapid clicking on topping options with no errors</div>
+    <div class="test-case">31. <span class="question-ref">Q8</span> Verify that topping categories (if any) are logically organized</div>
+    <div class="test-case">32. Verify that scroll functionality works smoothly if topping list is long</div>
+    <div class="test-case">33. Verify that tooltips or hover effects provide additional information about toppings</div>
+    <div class="test-case">34. <span class="question-ref">Q7</span> Verify that undo/redo functionality exists for topping selection (if applicable)</div>
+    <div class="test-case">35. Verify that keyboard navigation works for topping selection</div>
+    <div class="test-case">36. Verify that tab order is logical when navigating with keyboard</div>
+
+    <h3>Accessibility</h3>
+    <div class="test-case">37. Verify that screen readers can properly announce topping names and states</div>
+    <div class="test-case">38. Verify that color contrast meets WCAG standards for text and buttons</div>
+    <div class="test-case">39. Verify that topping selection works with keyboard only (no mouse)</div>
+    <div class="test-case">40. Verify that focus indicators are visible on interactive elements</div>
+    <div class="test-case">41. Verify that alt text exists for all topping images</div>
+    <div class="test-case">42. Verify that font size is readable and adjustable if needed</div>
+
+    <h2>COMPATIBILITY TESTING</h2>
+    
+    <h3>Cross-Browser</h3>
+    <div class="test-case">43. Verify topping selection works correctly on Chrome</div>
+    <div class="test-case">44. Verify topping selection works correctly on Firefox</div>
+    <div class="test-case">45. Verify topping selection works correctly on Safari</div>
+    <div class="test-case">46. Verify topping selection works correctly on Edge</div>
+    <div class="test-case">47. Verify topping selection works correctly on mobile browsers (Chrome Mobile, Safari iOS)</div>
+
+    <h3>Cross-Device</h3>
+    <div class="test-case">48. Verify topping selection works on different devices (desktop, tablet, mobile)</div>
+    <div class="test-case">49. Verify topping selection works on different screen resolutions</div>
+    <div class="test-case">50. Verify touch interactions work properly on touchscreen devices</div>
+    <div class="test-case">51. Verify that interface adapts correctly to portrait and landscape orientations</div>
+    <div class="test-case">52. Verify that topping selection works on various operating systems (Windows, macOS, iOS, Android)</div>
+
+    <h2>PERFORMANCE TESTING</h2>
+    
+    <h3>Response Time</h3>
+    <div class="test-case">53. Verify that topping selection responds within acceptable time (< 1 second)</div>
+    <div class="test-case">54. Verify that pizza visualization updates within acceptable time after topping selection</div>
+    <div class="test-case">55. Verify that price calculation happens instantly without noticeable delay</div>
+    <div class="test-case">56. Verify that page load time for topping customization is under 3 seconds</div>
+    <div class="test-case">57. Verify that multiple rapid topping selections don't cause lag or freezing</div>
+
+    <h3>Load Testing</h3>
+    <div class="test-case">58. Verify that system handles multiple users customizing pizzas simultaneously</div>
+    <div class="test-case">59. Verify that topping selection performance doesn't degrade with all toppings selected</div>
+    <div class="test-case">60. Verify that system remains stable during peak ordering hours</div>
+    <div class="test-case">61. Verify that memory usage stays within acceptable limits during extended topping selection session</div>
+
+    <h2>SECURITY TESTING</h2>
+    
+    <h3>Input Validation</h3>
+    <div class="test-case">62. Verify that price manipulation is not possible through browser console or dev tools</div>
+    <div class="test-case">63. Verify that topping selection data cannot be tampered with on client side</div>
+    <div class="test-case">64. Verify that XSS attacks are prevented in topping names/descriptions</div>
+    <div class="test-case">65. Verify that SQL injection is prevented if topping data comes from database</div>
+    <div class="test-case">66. Verify that unauthorized toppings cannot be added through manipulation</div>
+
+    <h3>Data Protection</h3>
+    <div class="test-case">67. Verify that topping selection data is transmitted securely (HTTPS)</div>
+    <div class="test-case">68. Verify that session data for topping selection is properly encrypted</div>
+    <div class="test-case">69. Verify that topping selection doesn't expose sensitive business logic in client code</div>
+
+    <h2>LOCALIZATION/INTERNATIONALIZATION (i18n/L10n)</h2>
+    <div class="test-case">70. Verify that topping names are correctly translated in different languages</div>
+    <div class="test-case">71. Verify that currency symbols display correctly based on locale</div>
+    <div class="test-case">72. Verify that price formatting follows local standards (decimal separators, etc.)</div>
+    <div class="test-case">73. Verify that text direction is correct for RTL languages (Arabic, Hebrew)</div>
+    <div class="test-case">74. Verify that date/time formats (if any) follow local conventions</div>
+
+    <h2>INTEGRATION TESTING</h2>
+    <div class="test-case">75. <span class="question-ref">Q2</span> Verify that topping selection integrates correctly with cart/checkout system</div>
+    <div class="test-case">76. Verify that selected toppings are reflected in order summary</div>
+    <div class="test-case">77. Verify that topping data is correctly sent to backend when order is placed</div>
+    <div class="test-case">78. Verify that topping selection integrates with inventory management (if applicable)</div>
+    <div class="test-case">79. Verify that payment calculation includes correct topping prices</div>
+    <div class="test-case">80. Verify that order confirmation shows accurate topping details</div>
+
+    <h2>NEGATIVE TESTING</h2>
+    
+    <h3>Invalid Actions</h3>
+    <div class="test-case">81. <span class="question-ref">Q4</span> Verify system behavior when trying to select more toppings than maximum allowed</div>
+    <div class="test-case">82. Verify system behavior when trying to order pizza with zero toppings (if not allowed)</div>
+    <div class="test-case">83. Verify that clicking outside topping area doesn't unintentionally deselect toppings</div>
+    <div class="test-case">84. Verify system handles corrupted topping images gracefully</div>
+    <div class="test-case">85. Verify system behavior when topping data fails to load from server</div>
+    <div class="test-case">86. <span class="question-ref">Q3 Q5</span> Verify that disabled toppings (out of stock or incompatible) cannot be selected</div>
+    <div class="test-case">87. Verify system behavior when network connection is lost during topping selection</div>
+    <div class="test-case">88. Verify that page refresh doesn't cause data loss of selected toppings</div>
+
+    <h3>Boundary Testing</h3>
+    <div class="test-case">89. <span class="question-ref">Q1 Q4</span> Verify system behavior with minimum number of toppings (0 or 1) on different pizza sizes</div>
+    <div class="test-case">90. <span class="question-ref">Q1 Q4</span> Verify system behavior with maximum number of toppings allowed on different pizza sizes</div>
+    <div class="test-case">91. Verify price calculation with extreme combinations (all expensive toppings)</div>
+    <div class="test-case">92. Verify system handles very long topping names correctly</div>
+    <div class="test-case">93. Verify system handles special characters in topping descriptions</div>
+
+    <h3>Error Handling</h3>
+    <div class="test-case">94. Verify appropriate error message displays when topping selection fails</div>
+    <div class="test-case">95. Verify that system recovers gracefully from backend errors</div>
+    <div class="test-case">96. Verify that timeout errors are handled properly</div>
+    <div class="test-case">97. Verify that 404/500 errors during topping image loading are handled gracefully</div>
+
+    <h2>REGRESSION TESTING</h2>
+    <div class="test-case">98. Verify that previous bug fixes for topping feature still work correctly</div>
+    <div class="test-case">99. Verify that new topping additions don't break existing functionality</div>
+    <div class="test-case">100. <span class="question-ref">Q1</span> Verify that updates to pizza sizes don't affect topping selection logic</div>
+
+    <h2>SMOKE TESTING</h2>
+    <div class="test-case">101. Verify basic topping add/remove functionality works after deployment</div>
+    <div class="test-case">102. <span class="question-ref">Q2</span> Verify that critical path (select topping → view price → proceed to order) works</div>
+    <div class="test-case">103. Verify that topping interface loads without crashes</div>
+
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ecf0f1; text-align: center; color: #7f8c8d; font-size: 12px;">
+        <p><strong>Total Test Cases: 103</strong></p>
+        <p>Generated on December 29, 2025 | QA Documentation</p>
+    </div>
+</body>
+</html>
